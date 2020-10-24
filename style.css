@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+:root {
+  --darkmode_body: linear-gradient(320deg, black, #4c4c4c);
+  --darkmode_card: linear-gradient(320deg, #262626, #3d3d3d);
+  --darkmode_text: white;
+  --darkmode_border: darkgrey;
+  --darkmode_button: black;
+  --darkmode_footer: darkgrey;
+
+  --lightmode_body: linear-gradient(45deg, #ffe1c8, #ffd2aa);
+  --lightmode_card: linear-gradient(135deg, #ffaf82, #ffa06e);
+  --lightmode_text: black;
+  --lightmode_border: lightpink;
+  --lightmode_button: #ff9b4d;
+  --lightmode_footer: orange;
+
+  --currentmode_body: var(--darkmode_body);
+  --currentmode_card: var(--darkmode_card);
+  --currentmode_text: var(--darkmode_text);
+  --currentmode_border: var(--darkmode_border);
+  --currentmode_button: var(--darkmode_button);
+  --currentmode_footer: var(--darkmode_footer);
+}
+
+* {
+  padding: 0;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background-image: var(--currentmode_body);
+}
+
+.topnav {
+  position: relative;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+#jogos {
+  left: 40%;
+}
+
+#projetos {
+  left: 50%;
+}
+
+#tudo {
+  left: 60%;
+}
+
+.centered-buttons {
+  vertical-align: middle;
+}
+
+.topnav button {
+  background-color: var(--currentmode_button);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#displayMode {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+  left: 5%;
+}
+
+.topnav-centered {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Header / Title */
+.header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 25px;
+  text-align: center;
+  background: var(--currentmode_card);
+}
+
+.header h2 {
+  font-family: "Roboto";
+  color: var(--currentmode_text);
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 58.5%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 20%;
+  padding-left: 20px;
+}
+
+/* Demo Images*/
+.demo-img {
+  border: var(--currentmode_border) 2px solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: #aaa;
+}
+
+.profile-img {
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  background-color: #aaa;
+}
+
+/* Add a card effect for articles */
+.card {
+  margin-left: auto;
+  margin-right: 0;
+  border: 50px;
+  border-radius: 10px;
+  background-image: var(--currentmode_card);
+  margin-top: 20px;
+  padding: 1% 2.5% 1% 2.5%;
+  box-shadow: 5px 5px rgba(0, 0, 0, .2);
+}
+
+.card button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.github {
+  background-color: black !important; 
+  float: right !important;
+}
+
+.detalhes {
+  background-color: #323296 !important; 
+}
+
+.card h2, h3 {
+  text-align: center;
+}
+
+.card h2, h3, h5, p {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  border: 5px;
+  color: var(--currentmode_text);
+  font-family: "Roboto";
+}
+
+#rightcolumn {
+  padding: 5%;
+}
+
+.post {
+  width: 60%;
+}
+
+.description, .findme {
+  text-align: justify;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.findme a {
+  color: var(--darkmode_text);
+}
+
+/* Footer */
+.footer {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  padding: 0.01px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: var(--currentmode_footer);
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn {
+    width: 100%;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rightcolumn {
+    width: 50%;
+    display: block;
+  }
+}

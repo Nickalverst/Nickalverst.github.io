@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="./script.js" defer></script>
+	<title>Nickalverst</title>
+</head>
+
+<body>
+	<div class="header">
+		<h2>Portfólio de Nicolas Barbieri Sousa</h2>
+	</div>
+
+	<div class="topnav">
+
+		<!-- CENTERED LINKS-->
+		<div class="centered-buttons">
+			<button type="button" onclick="filterGames()" class="topnav-centered" id="jogos">Jogos</button>
+			<button type="button" onclick="filterProjects()" class="topnav-centered" id="projetos">Projetos</button>
+			<button type="button" onclick="filterAll()" class="topnav-centered" id="tudo">Tudo</button>
+		</div>
+
+		<!-- LEFT-ALIGNED LINKS (DEFAULT) -->
+		<button type="button" onclick="changeDisplayMode()" id="displayMode">Modo Claro</button>
+	
+	</div>
+
+	<!-- PUBLICAÇÕES -->
+
+	<div class="row">
+		<div class="leftcolumn">
+
+		<div class="card post project">
+			<h2>The Cosmic Adventures of Milt & Gary</h2>
+			<h5>Jogo digital (C# - Unity), em desenvolvimento</h5>
+			<img src="Cosmic/demo-img.jpg" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" class="detalhes">DETALHES</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/The-Cosmic-Adventures-of-Milt-and-Gary', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;The Cosmic Adventures of Milt and Gary é um jogo indie 2D cooperativo de aventura em estilo top-down que se passa em uma Inglaterra entreguerras vítima de uma invasão alienígena devastadora em meio a qual um garoto e seu avô - veterano da Grande Guerra - buscam compreender a situação.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Spacewar!</h2>
+			<h5>Jogo digital (JavaScript), Jun 23, 2020</h5>
+			<img src="Spacewar/demo-img.jpg" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Spacewar/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Spacewar', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Recriação do jogo multijogador de combate espacial Spacewar!, desenvolvido por Steve Russel em colaboração com Martin Graetz, Wayne Wiitanen, Bob Saunders, Steve Piner, e outros e lançado em abril de 1962 para o minicomputador DEC (Digital Equipment Corporation) PDP-1.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Jogo da Velha</h2>
+			<h5>Jogo digital (JavaScript), Out 13, 2020</h5>
+			<img src="Velha_DIO/velha-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Velha_DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Velha_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Criando seu próprio jogo da velha com HTML e JavaScript", ministrado por Vitor Ruschoni na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Jogo da Memória</h2>
+			<h5>Jogo digital (JavaScript), Out 13, 2020</h5>
+			<img src="Memoria_DIO/memoria-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Memoria_DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Memoria_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Desenvolvendo um jogo da memória", ministrado por Gabriela Pinheiro na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Space-Shooter</h2>
+			<h5>Jogo digital (JavaScript), Out 13, 2020</h5>
+			<img src="Space-Shooter_DIO/space-shooter-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Space-Shooter_DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Space-Shooter_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Criando seu jogo no estilo Space Shooter", ministrado por Gabriela Pinheiro na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Jogo do Dinossauro</h2>
+			<h5>Jogo digital (JavaScript), Out 1, 2020</h5>
+			<img src="Dino_DIO/dino-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Dino-DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Dino_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Recriando o famoso jogo do dinossauro sem internet", ministrado por Celso Henrique na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Genius</h2>
+			<h5>Jogo digital (JavaScript), Set 30, 2020</h5>
+			<img src="Genius_DIO/genius-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Genius_DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Genius_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Criando seu jogo de memória estilo Genius", ministrado por Gabriela Pinheiro na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post playable-game">
+			<h2 class="title">Resgate</h2>
+			<h5>Jogo digital (JavaScript), Set 28, 2020</h5>
+			<img src="Resgate-DIO/resgate-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Resgate-DIO/index.html';">JOGAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Resgate_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Construindo o seu primeiro jogo de naves", ministrado por Denilson Bonatti na plataforma Digital Innovation One. O curso faz parte do boot camp JavaScript Game Developer, composto por 28 atividades que somam um total de 108 horas de aulas, projetos práticos e desafios de código.</p>
+		</div>
+
+		<div class="card post project">
+			<h2>Interface da Netflix</h2>
+			<h5>Projeto (CSS), Set 27, 2020</h5>
+			<img src="Netflix_DIO/netflix-demo.png" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Netflix_DIO/index.html';">VISUALIZAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Netflix_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Recriando a Interface do Netflix", ministrado por Felipe Silva Aguiar na plataforma Digital Innovation One.</p>
+		</div>
+
+		<div class="card post project">
+			<h2 class="title">Página de log-in do Instagram</h2>
+			<h5>Projeto (CSS), Set 25, 2020</h5>
+			<img src="Instagram_DIO/demo.jpg" class="demo-img" alt="IMAGEM DO PROJETO">
+			<br><button type="button" onclick="window.location.href='Instagram_DIO/index.html';">VISUALIZAR</button>
+			<button type="button" onclick="window.open('https://github.com/Nickalverst/Instagram_DIO', '_blank')" class="github">CÓDIGO-FONTE</button>
+			<p class="description">&emsp;&emsp;Resultado do curso "Recriando a página inicial do Instagram", ministrado por Gabriela Pinheiro na plataforma Digital Innovation One.</p>
+		</div>
+
+	</div>
+
+	<!-- INFORMAÇÕES -->
+
+	<div class="rightcolumn">
+
+		<div class="card about">
+			<h2 class="title">Sobre Mim</h2>
+			<img src="picture.jpg" alt="Fotografia do rosto" class="profile-img">
+			<p class="description" id="rightcolumn">&emsp;&emsp;Minha paixão por jogos digitais e computação é o motivo pelo qual curso Tecnologia em Jogos Digitais na Universidade Presbiteriana Mackenzie, em que tenho estudado especialmente desenvolvimento de software nas linguagens C# e JavaScript, além de ferramentas como o motor de jogos Unity. Para além dos estudos curriculares, tenho me aprofundado em tecnologias correlatas, como modelagem e desenho digital, HTML e CSS, e emergentes, como inteligência artificial e ray tracing. Parte do resultado desses estudos pode ser encontrado no GitHub, tanto em repositórios de projetos pessoais como de projetos práticos guiados.</p>
+		</div>
+
+		<!--
+		<div class="card">
+			<h3>Projetos mais recentes</h3>
+			<div class="fakeimg">Imagem</div><br>
+			<div class="fakeimg">Imagem</div><br>
+			<div class="fakeimg">Imagem</div>
+		</div>
+		-->
+			<div class="card findme">
+				<h3>Encontre-me aqui:</h3>
+				<p id="rightcolumn">LinkedIn: <a href="https://linkedin.com/in/nicolasbsousa" target="_blank" rel="noopener noreferrer">linkedin.com/in/nicolasbsousa</a><br>GitHub: <a href="https://github.com/Nickalverst" target="_blank" rel="noopener noreferrer">github.com/Nickalverst</a><br>Lattes: <a href="https://lattes.cnpq.br/9703194901588958" target="_blank" rel="noopener noreferrer">lattes.cnpq.br/9703194901588958</a></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<h4>&#169; 2020 Nickalverst. Todos os direitos reservados.</h4>
+	</div>
+</body>
+
+</html>
