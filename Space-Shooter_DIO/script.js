@@ -168,3 +168,9 @@ function gameOver() {
         instructionsText.style.display = "block";
     });
 }
+
+function Instruction() {
+    alert('Bem vindo ao Space Shooter!\n\nMovimento vertical: Setas direcionais.\n\nDisparo: barrra de espaço. ');
+}
+
+Instruction();

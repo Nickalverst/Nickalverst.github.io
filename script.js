@@ -5,10 +5,6 @@ var games = Array.from(document.getElementsByClassName('playable-game'));
 var projects = Array.from(document.getElementsByClassName('project'));
 var all = Array.from(document.getElementsByClassName('post'));
 
-console.log(projects);
-console.log(games);
-console.log(all);
-
 function filterAll() {
 	for (i = 0; i < all.length; i++) {
 		all[i].style.display = "block";
