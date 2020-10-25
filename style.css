@@ -224,6 +224,55 @@ button:hover {
   background-color: var(--currentmode_footer);
 }
 
+@media screen and (max-width: 1200px) {
+  .header {
+    width: 70%;
+  }
+
+  .post {
+    width: 75%;
+  }
+
+  .rightcolumn {
+    width: 27%;
+  }
+
+  .findme {
+    font-size: 14px;
+  }
+
+  .topnav button {
+  padding: 12px 18px;
+  font-size: 16px;
+  }
+
+  #displayMode {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .footer {
+    width: 50%;
+  }
+
+  .card button {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1155px) {
+  .findme {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1082px) {
+  .findme {
+    font-size: 13px;
+  }
+}
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 1000px) {
   .leftcolumn {
