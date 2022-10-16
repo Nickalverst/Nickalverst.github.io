@@ -34,33 +34,6 @@ function getOS() {
   return os;
 }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPosition);
-  } else {
-    gd += ".\nGeolocation is not supported by the user's browser";
-  }
-}
-
-function getPosition(position) {
-  var positionInfo = ".\nGeographical coordinates: (" + position.coords.latitude + ", " + position.coords.longitude + ")";
-  positionInfo += ".\nAccuracy: " + position.coords.accuracy.toFixed(1) + "m";
-
-  positionInfo += ".\nAltitude: ";
-  if (position.coords.altitude != null) positionInfo +=  position.coords.altitude + "m";
-  else positionInfo += "not available";
-
-  positionInfo += ".\nSpeed: ";
-  if (position.coords.speed != null) positionInfo += position.coords.speed + "m/s (" + position.coords.speed * 3.6 + "km/h)";
-  else positionInfo += "not available";
-
-  positionInfo += ".\nHeading: ";
-  if (position.coords.heading != null) positionInfo += position.coords.heading + "degrees";
-  else positionInfo += "not available";
-  
-  gd += positionInfo;
-}
-
 function plugns(){
   var plugs = ".\nInstalled plug-ins: ";
   for (var i = 0; i < navigator.plugins.length; i++) {
@@ -102,9 +75,8 @@ function gpu(){
   var renderer;
   try {
     gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  }   
-  catch (e) {
   }
+  catch (e) { }
   if (gl) {
     debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
     vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
@@ -143,7 +115,7 @@ gd += ".\nOperating system: " + os;
 gd += ".\nMemory: " + memory + "GB";
 gd += ".\nNumber of CPU cores: " + cpu;
 gd += ".\nLanguage: " + lang;
-gd += ".\nTouch: " + touch;
+gd += ".\nTouch screen: " + touch;
 gd += ".\nUser agent: "+ usr;
 gd += ".\nScreen resolution: "+ resolution;
 gd += ".\nScreen color depth: "+ color +" bits";
@@ -157,11 +129,9 @@ ip();
 detectAdBlock();
 gpu();
 get_login_status();
-//getLocation();
-//getPosition();
              
 function get_login_status(network, status){
-    gd += ".\nLogged into Google: " + status;
+  gd += ".\nLogged into Google: " + status;
 }
                  
 async function detectAdBlock() {
@@ -175,51 +145,20 @@ async function detectAdBlock() {
   } finally {
     gd = gd + ".\nAdBlocker enabled: false";
   }
-}   
-    
-function stringToUUID (str)
-{
-  if (str === undefined || !str.length)
-    str = "" + Math.random() * new Date().getTime() + Math.random();
-
-  let c = 0,
-      r = "";
-
-  for (let i = 0; i < str.length; i++)
-    c = (c + (str.charCodeAt(i) * (i + 1) - 1)) & 0xfffffffffffff;
-
-  str = str.substr(str.length / 2) + c.toString(16) + str.substr(0, str.length / 2);
-  for(let i = 0, p = c + str.length; i < 32; i++)
-  {
-    if (i == 8 || i == 12 || i == 16 || i == 20)
-      r += "-";
-
-    c = p = (str[(i ** i + p + 1) % str.length]).charCodeAt(0) + p + i;
-    if (i == 12)
-      c = (c % 5) + 1; //1-5
-    else if (i == 16)
-      c = (c % 4) + 8; //8-B
-    else
-      c %= 16; //0-F
-
-    r += c.toString(16);
-  }
-  return r;
 }
-
 
 function get_browser() {
   var ua=navigator.userAgent,tem,M=ua.match(/(fxios|opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
   if(/trident/i.test(M[1])){
     tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
-    return {name:'IE',version:(tem[1]||'')};
-  }   
-  if(M[1]==='Chrome'){
-      tem=ua.match(/\bOPR|Edge\/(\d+)/)
-      if(tem!=null)   {return {name:'Opera', version:tem[1]};}
-      }   
+    return { name:'IE',version:(tem[1]||'') };
+  }
+  if(M[1]==='Chrome') {
+    tem=ua.match(/\bOPR|Edge\/(\d+)/)
+    if (tem != null) { return {name:'Opera', version:tem[1]}; }
+  }
   M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-  if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+  if ((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]); }
   return {
     name: M[0],
     version: M[1]
@@ -230,119 +169,73 @@ var browser = get_browser();
 
 var browsern = browser.name;
 var bversion = browser.version;
-if(browsern == "FxiOS"){
-  browsern = "Firefox On iOS";
-}
-                                            
-/*html2canvas(document.body, {
-onrendered: function(canvas)
-{
-var img = canvas.toDataURL();
-$("#result-image").attr('src', img).show();
-}
-});*/
-
-function shot(){
-html2canvas(document.body, {
-onrendered: function(canvas)
-{
-canvas.toBlob(function(blob) {
-const blobUrl = URL.createObjectURL(blob);
-//window.open(blobUrl, '_blank');
-saveAs(blob, "Screenshot.png");
-});
-}
-});
-}
-                                            
-function getScreenRefreshRate(callback, runIndefinitely) {
-	let requestId = null;
-	let callbackTriggered = false;
-	runIndefinitely = runIndefinitely || false;
-	if (!window.requestAnimationFrame) {
-		window.requestAnimationFrame = window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
-	}
-	let DOMHighResTimeStampCollection = [];
-	let triggerAnimation = function(DOMHighResTimeStamp) {
-		DOMHighResTimeStampCollection.unshift(DOMHighResTimeStamp);
-		if (DOMHighResTimeStampCollection.length > 10) {
-			let t0 = DOMHighResTimeStampCollection.pop();
-			let fps = Math.floor(1000 * 10 / (DOMHighResTimeStamp - t0));
-			if (!callbackTriggered) {
-				callback.call(undefined, fps, DOMHighResTimeStampCollection);
-			}
-			if (runIndefinitely) {
-				callbackTriggered = false;
-			} else {
-				callbackTriggered = true;
-			}
-		}
-		requestId = window.requestAnimationFrame(triggerAnimation);
-	};
-	window.requestAnimationFrame(triggerAnimation);
-	// Stop after half second if it shouldn't run indefinitely
-	if (!runIndefinitely) {
-		window.setTimeout(function() {
-			window.cancelAnimationFrame(requestId);
-			requestId = null;
-		}, 500);
-	}
-}
+if(browsern == "FxiOS") { browsern = "Firefox On iOS"; }
 
 function timecheck(){
-  vpn = "Unable to detect";
+  vpn = "unable to detect";
   if(tz !="none"){
     var btz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log("Browser time" + btz);
-    console.log("IP Time" + tz);
     if(tz == btz){
       vpn = "false";
     }
-    else{
+    else {
       vpn = "true";
     }
-}
+  }
   gd = gd + ".\nVPN enabled: " + vpn;
 }
 timecheck();
 
-viewmode = "Light";
+viewmode = "light";
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     console.log("Dark Mode");
-    viewmode = "Dark"
+    viewmode = "dark"
 } else console.log("Light Mode");
 gd = gd + ".\nColor scheme: " + viewmode;
-
-gd += ".\nTouch screen: " + touch;
-    
-//setTimeout(codingCourse, 1500);
-function codingCourse() {
-  gd += isp + region + post + render + vendor + browsern + bversion;
-  var uid = stringToUUID(gd);
-  sessionStorage.setItem("idmove", uid);
-  timecheck();
-  getScreenRefreshRate(function(FPS){
-  fps = Math.round(FPS / 5) * 5;
-  
-  if (fps > 31  && fps <= 70) fps = 60;
-  console.log(fps);
-
-  gd += "Screen refresh rate: " + fps + "Hz";
-  });
-}
-
-setTimeout(sendEmail, 3000);
 
 function sendEmail() {
   Email.send({
     SecureToken: "ddce9da2-557b-412d-bf98-b417d022716c",
-    To : 'nicolasbarbierisousa@icloud.com',
+    To : "nicolasbarbierisousa@icloud.com",
     From : "nicolasbarbierisousa@gmail.com",
-    Subject : "User data",
+    Subject : "New access to Pessoa detected.",
     Body : gd
-}).then(
-  console.log("enviado")
-);
+    }).then(
+    console.log("Acesso anunciado.")
+  );
 }
 
 console.log(gd);
+setTimeout(sendEmail, 500);
+setTimeout(redirect, 1000);
+
+function redirect () {
+  window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+}
+
+/*function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getPosition);
+  } else {
+    gd += ".\nGeolocation is not supported by the user's browser";
+  }
+}
+
+function getPosition(position) {
+  var positionInfo = ".\nGeographical coordinates: (" + position.coords.latitude + ", " + position.coords.longitude + ")";
+  positionInfo += ".\nAccuracy: " + position.coords.accuracy.toFixed(1) + "m";
+
+  positionInfo += ".\nAltitude: ";
+  if (position.coords.altitude != null) positionInfo +=  position.coords.altitude + "m";
+  else positionInfo += "not available";
+
+  positionInfo += ".\nSpeed: ";
+  if (position.coords.speed != null) positionInfo += position.coords.speed + "m/s (" + position.coords.speed * 3.6 + "km/h)";
+  else positionInfo += "not available";
+
+  positionInfo += ".\nHeading: ";
+  if (position.coords.heading != null) positionInfo += position.coords.heading + "degrees";
+  else positionInfo += "not available";
+  
+  gd += positionInfo;
+}*/
