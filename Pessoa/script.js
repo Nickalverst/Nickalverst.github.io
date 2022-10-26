@@ -207,7 +207,7 @@ function sendEmail() {
 
 //console.log(gd);
 sendEmail();
-setTimeout(redirect, 1000);
+//setTimeout(redirect, 1000);
 
 function redirect () {
   window.location.replace("https://youtu.be/dQw4w9WgXcQ");
