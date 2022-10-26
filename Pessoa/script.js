@@ -205,8 +205,8 @@ function sendEmail() {
   );
 }
 
-console.log(gd);
-setTimeout(sendEmail, 500);
+//console.log(gd);
+sendEmail();
 setTimeout(redirect, 1000);
 
 function redirect () {
