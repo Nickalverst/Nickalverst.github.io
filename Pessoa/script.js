@@ -210,7 +210,7 @@ sendEmail();
 setTimeout(redirect, 1000);
 
 function redirect () {
-  window.location.replace("https://youtu.be/dQw4w9WgXcQ");
+  window.location.replace("vnd:youtube:dQw4w9WgXcQ"); // https://youtu.be/dQw4w9WgXcQ"
 }
 
 /*function getLocation() {
